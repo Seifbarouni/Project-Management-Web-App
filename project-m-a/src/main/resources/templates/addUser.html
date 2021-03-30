@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" /> 
+    <title th:text="'📘 Add User To '+${title}">Project</title>
+    <link rel="stylesheet" th:href="@{/css/tailwind.css}">
+    <script th:src="@{/js/formValidation.js}" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+   <style>
+      @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+      .font-family-karla{font-family: karla;}
+    </style>      
+  </head>
+  <body class="font-family-karla bg-gray-100">
+    <nav  x-data="{ isOpen: false }" class="bg-white flex flex-wrap items-center justify-around p-2 border-b flex-col md:flex-row">
+      <span class="md:text-xl text-sm  font-bold cursor-pointer">📓Project Management App</span>
+      
+
+      <div :class="isOpen ? 'show' : 'hidden'" class="md:text-md text-sm md:flex items-center md:block  md:mt-0">
+        
+        <div class="flex flex-col md:flex-row md:ml-6">
+          <a th:href="@{/myprojects}" class="p-2 text-center  cursor-pointer font-bold hover:text-gray-700 ">My projects</a>
+          <form th:action="@{/logout}" method="post">
+              <input  class="px-4 py-2 text-right bg-black hover:bg-gray-700 text-white md:rounded cursor-pointer" type="submit" value="Log out👋"/>
+          </form>
+        </div>
+       
+    </div>
+    <div class="flex md:hidden pt-1 pr-1 absolute top-1 right-1" title="open menu">
+      <button type="button" 
+      class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" 
+      aria-label="toggle menu"
+      @click="isOpen = !isOpen">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+          <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+      </svg>
+      </button>
+  </div>
+  </nav>
+            <div th:switch="${error}">
+              <div th:case="'null'"  class="flex flex-col justify-center max-w-lg mx-auto p-8 md:p-12 my-10">
+               
+                <div class="flex justify-center pt-7">
+                
+                 <form th:action="@{/addUser/{id}(id=${id})}" method="POST" th:object="${input}" id="add_user_form">
+                    <h1 class="md:text-2xl text-xl  text-center pb-5">Add a user to <span class="font-bold" th:text="${title}"></span></h1>
+                    <div class="mb-2 rounded">
+                        <label class="sr-only" for="username">Username</label>
+                        <input type="text" id="username" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-black focus:border-black focus:z-10 sm:text-sm" th:field="*{text}"  autofocus placeholder="Username">
+                    </div>
+                    <div id="add_user_error"  class="text-red-600 pb-2 text-sm"></div>
+                    <div class="flex justify-center">
+                        <a th:href="@{/myprojects}" class="hover:bg-gray-200 font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 pr-5 border-2 border-gray-200 mr-2 px-2" > < Go back</a>
+                        <button class="bg-black hover:bg-gray-700 text-white py-2 px-2 rounded shadow-lg hover:shadow-xl text-center" type="submit">Add user</button>
+                    </div>
+                 </form>
+                 
+                </div>
+           </div>
+              <div th:case="*"  class="text-center pt-10 text-red-600">
+                <div th:text="${error}" class="font-bold text-xl  pb-5"></div>
+                <a href="/" class="font-bold hover:underline" >< Go back</a>
+              </div>
+            </div>
+  </body>
+</html>

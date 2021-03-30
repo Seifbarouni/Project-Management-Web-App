@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" /> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>🔒 Register</title>
+    <link rel="stylesheet" th:href="@{/css/tailwind.css}">  
+    <script th:src="@{/js/formValidation.js}" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+  
+        .font-family-karla{font-family: karla;}
+      </style>
+
+</head>
+<body class="bg-gray-100 min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0 font-family-karla">
+    <header class="max-w-lg mx-auto">
+
+        <a th:href="@{/home}">
+            <h1 class="md:text-3xl text-xl font-bold text-black text-center cursor-pointer">📓Project Management App</h1>
+        </a>
+    </header>
+
+    <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-md">
+        <section>
+            <h3 class="font-bold md:text-xl">🌐 Become a part of this community</h3>
+            <p class="text-gray-600 pt-2 md:text-base text-sm">Create your new account!</p>
+        </section>
+
+        <section class="mt-10">
+            <form class="flex flex-col" method="POST" th:object="${User}"  th:action="@{/register}" id="form">
+                <div th:if="${message}" class="pb-5 text-sm">
+                    <div th:switch="${message}">
+                        <p th:case="'success!'">
+                            <span  th:text="'✔️ '+${message}" class="text-green-600">
+                            </span>
+                        </p>
+                        <p th:case="*" >
+                            <span th:text="'❌ '+${message}" class="text-red-600 "></span>
+                        </p>
+                    </div>
+                </div>
+               
+                <div class="mb-2 rounded">
+                    <label class="sr-only" for="Username">Username</label>
+                    <input type="text" id="Username" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-black focus:border-black focus:z-10 md:text-sm text-xs" name="username" th:field="*{userName}" placeholder="Username"  autofocus required>
+                </div>
+                <div class="mb-2 rounded">
+                    <label class="sr-only" for="email">Email</label>
+                    <input type="email" id="email" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-black focus:border-black focus:z-10 md:text-sm text-xs" required th:field="*{email}" placeholder="Email">
+                </div>
+                <div class="mb-2 rounded">
+                    <label class="sr-only" for="password">Password</label>
+                    <input type="password" id="password" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-black focus:border-black focus:z-10 md:text-sm text-xs" required th:field="*{password}" placeholder="Password">
+                </div>
+                <div id="error" class="text-red-600 pb-2 text-sm"></div>
+              
+                <button class="relative w-full flex justify-center py-2 px-4 border border-transparent md:text-sm text-xs font-medium rounded-md text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2" type="submit">Register</button>
+            </form>
+        </section>
+    </main>
+    <div class="max-w-lg mx-auto text-center mb-6 md:text-sm text-xs">
+        <a th:href="@{/login}" class="font-bold hover:underline"> < Go Back</a>
+    </div>
+</body>
+</html>

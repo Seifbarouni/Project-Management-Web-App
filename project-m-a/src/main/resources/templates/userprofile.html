@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" /> 
+    <title th:text="'🧍 '+${username}">Username</title>
+    <link rel="stylesheet" th:href="@{/css/tailwind.css}">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+  
+        .font-family-karla{font-family: karla;}
+      </style>  
+</head>
+  <body class="font-family-karla bg-gray-100">
+    <nav  x-data="{ isOpen: false }" class="bg-white flex flex-wrap items-center justify-around p-2 border-b flex-col md:flex-row">
+      <span class="md:text-xl text-sm  font-bold cursor-pointer">📓Project Management App</span>
+      
+      <div :class="isOpen ? 'show' : 'hidden'" class="md:text-md text-sm md:flex items-center md:block  md:mt-0">
+        
+        <div class="flex flex-col md:flex-row md:ml-6">
+          <a th:href="@{/myprojects}" class="p-2 text-center  cursor-pointer font-bold hover:text-gray-700 ">My projects</a>
+          <form th:action="@{/logout}" method="post">
+              <input  class="px-4 py-2 text-right bg-black hover:bg-gray-700 text-white md:rounded cursor-pointer" type="submit" value="Log out👋"/>
+          </form>
+        </div>
+       
+    </div>
+    <div class="flex md:hidden pt-1 pr-1 absolute top-1 right-1" title="open menu">
+      <button type="button" 
+      class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" 
+      aria-label="toggle menu"
+      @click="isOpen = !isOpen">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+          <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+      </svg>
+      </button>
+  </div>
+  </nav>
+    <div class="flex justify-center mt-16">
+        <div class="flex flex-col">
+          <div  class="self-center">
+            <img  class="inline-block md:h-24 md:w-24 h-16 w-16 rounded-full" th:src="@{https://ui-avatars.com/api/?background=random&length=1&name=}+'+'+${username}" alt="">
+        
+        <span class="relative inline-flex md:bottom-2 right-6  z-50 rounded-full md:h-3 md:w-3 h-2 w-2 bg-green-500 border-2 border-gray-100"></span>   
+      </div>
+            
+            <div  class=" md:text-lg text-sm  text-gray-600 mt-5">
+                <div class="pt-5"><span class="font-bold">👤 Username:</span> <span th:text=${username}></span></div>
+                <div class="pt-5">
+                     <span class="font-bold">📧 E-mail:</span> <span th:text="${email}"></span>
+                </div>
+                <div class="pt-5"><span class="font-bold">📖 Number of projects:</span>  <span th:text="${number}"></span></div>
+                <a th:href="@{/privacy}"  class="pt-5 flex items-center cursor-pointer hover:text-gray-500"><span class="font-bold flex-1">🔐 Privacy policy</span> <span class="flex-none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" height="16" width="16">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg></span></a>
+                  <div class="pt-5 text-red-500 cursor-pointer hover:text-red-400"><span class="font-bold">🗑️ Delete account</span></div>
+            </div>
+        </div>
+        
+    </div>
+    
+  </body>
+</html>

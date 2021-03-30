@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" /> 
+    <title>📗 Add project</title>
+    <link rel="stylesheet" th:href="@{/css/tailwind.css}">   
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+  
+        .font-family-karla{font-family: karla;}
+      </style>       
+  </head>
+  <body class="font-family-karla bg-gray-100">
+    <nav  x-data="{ isOpen: false }" class="bg-white flex flex-wrap items-center justify-around p-2 border-b flex-col md:flex-row">
+        <span class="md:text-xl text-sm  font-bold cursor-pointer">📓Project Management App</span>
+        <div :class="isOpen ? 'show' : 'hidden'" class="md:text-md text-sm md:flex items-center md:block  md:mt-0">
+          
+          <div class="flex flex-col md:flex-row md:ml-6">
+            <a th:href="@{/myprojects}" class="p-2 text-center  cursor-pointer font-bold hover:text-gray-700 ">My projects</a>
+            <form th:action="@{/logout}" method="post">
+                <input  class="px-4 py-2 text-right bg-black hover:bg-gray-700 text-white md:rounded cursor-pointer" type="submit" value="Log out👋"/>
+            </form>
+          </div>
+         
+      </div>
+      <div class="flex md:hidden pt-1 pr-1 absolute top-1 right-1" title="open menu">
+        <button type="button" 
+        class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" 
+        aria-label="toggle menu"
+        @click="isOpen = !isOpen">
+          <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+            <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+        </svg>
+        </button>
+    </div>
+    </nav>
+    <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10">
+        <section class="text-center">
+            <span class="text-2xl font-bold  text-black-800 pt-6 ">Add a new project!</span>
+        </section>
+
+        <section class="mt-10">
+            <form class="flex flex-col" method="POST" th:object="${Project}"  th:action="@{/addproject}">
+                <div th:if="${message}" class="pb-5">
+                    <div th:switch="${message}">
+                        <p th:case="'Success!'">
+                            <span  class="text-green-700">
+                                Project added successfully!<a class="hover:underline font-bold" th:href="@{/myprojects}"> Go back.</a>
+                            </span>
+                        </p>
+                        <p th:case="*" >
+                            <span th:text="${message}" class="text-red-600 "></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="mb-2 rounded">
+                    <label class="sr-only" for="Title">Title</label>
+                    <input type="text" id="Title" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-black focus:border-black focus:z-10 sm:text-sm" name="Title" th:field="*{Title}"  autofocus required placeholder="Title">
+                </div>
+                <div class="mb-2 rounded">
+                    <label for="type"></label>
+                        <select class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-black focus:border-black focus:z-10 sm:text-sm" name="type" id="type" th:field="*{type}"  required>
+                            <option th:each="value :${values}"
+                            th:value="${value}"
+                            th:text="${value}"
+                            ></option>
+                        </select>
+                </div>
+                <div class="mb-2 rounded ">
+                    <label class="sr-only" for="description">Description</label>
+                    <textarea rows="6" cols="50"  id="description" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-black focus:border-black focus:z-10 sm:text-sm" required th:field="*{description}" placeholder="Description"></textarea>
+                </div>
+               
+              
+                <button class="bg-black hover:bg-gray-700 text-white font-bold py-2 rounded shadow-lg  transition duration-200" type="submit">Add</button>
+            </form>
+        </section>
+    </main>
+  </body>
+</html>

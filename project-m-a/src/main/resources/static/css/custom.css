@@ -1,0 +1,12 @@
+.draggable {
+  cursor: move;
+}
+
+.draggable.dragging {
+  opacity: 1;
+  border: dashed 3px #373737;
+}
+
+::placeholder {
+  color: black;
+}

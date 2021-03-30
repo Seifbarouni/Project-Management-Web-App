@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" /> 
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" th:href="@{/css/tailwind.css}">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+  
+        .font-family-karla{font-family: karla;}
+      </style>
+    <title>Project Management App</title>
+</head>
+<body>
+    <div class="bg-white font-family-karla">
+        <nav  x-data="{ isOpen: false }" class="fixed z-10 w-full bg-white flex flex-wrap items-center justify-between lg:p-4 p-3 border-b flex-col md:flex-row">
+            <span class="lg:text-3xl text-xl  font-bold cursor-pointer lg:ml-4">📓Project Management App</span>
+            
+        
+            <div :class="isOpen ? 'show' : 'hidden'" class="md:text-md text-sm md:flex items-center md:block  mr-4">
+              
+              <div class=" flex flex-col md:flex-row md:ml-6 lg:text-base items-center">
+                <a href="#features" class="px-2 text-center  cursor-pointer  hover:text-gray-700 font-bold">Features</a>
+                <a th:href="@{/myprojects}" class=" text-center  cursor-pointer  hover:underline rounded py-2 px-2">Log in</a>
+                <a th:href="@{/register}"  class="px-4 py-2  bg-black hover:bg-gray-700 text-white md:rounded cursor-pointer" >Register</a>
+              </div>
+             
+          </div>
+          <div class="flex md:hidden pt-2 pr-1 absolute top-1 right-1" title="open menu">
+            <button type="button" 
+            class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" 
+            aria-label="toggle menu"
+            @click="isOpen = !isOpen"
+            @click.away="isOpen=false">
+              <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+            </svg>
+            </button>
+        </div>
+        </nav>
+       
+        <div class="lg:pt-32 pt-24 py-20 bg-gray-100 text-center">
+          <div class="container mx-auto px-6 flex flex-col items-center">
+            <div class="lg:text-4xl text-xl  font-bold mb-2">
+            More productivity for organized teams
+            </div>
+            <div class="lg:text-2xl text-lg mb-8 text-gray-500">
+                💻 One platform for you and your teams.
+            </div>
+            <a th:href="@{/register}" class="transform hover:scale-110 transition duration-300 ease-in-out bg-white font-bold rounded-full mt-6 lg:py-6 lg:px-8 py-4 px-6 shadow-lg uppercase tracking-wider focus:outline-none cursor-pointer">
+                Get Started
+            </a>
+          </div>
+        </div>
+        <section class="container mx-auto px-6 py-10">
+          <h2 id="features"  class="lg:text-4xl text-2xl font-bold text-center text-gray-800 mb-5">
+            Features
+          </h2>
+          <div class="flex items-center flex-wrap mb-10">
+            <div class="w-full md:w-1/2 px-4">
+              <h4 class="lg:text-3xl text-xl text-gray-800 font-bold mb-3">
+                Create projects easily 
+              </h4>
+              <p class="text-gray-600 mb-3">
+                You can create an unlimited amount of projects of various types:<ul>
+                    <li>🧍 Personal</li>
+                    <li>🏦 Buisness</li>
+                    <li>👨‍💻 Programming</li>
+                    <li>🏫 School</li>
+                </ul>
+              </p>
+            </div>
+            <div class="w-full md:w-1/2 px-4">
+              <img src="https://cdn.dribbble.com/users/2487395/screenshots/6311129/responsivedesign_2x.png" alt="responsive">
+            </div>
+          </div>
+          <div class="flex items-center flex-wrap mb-20">
+            <div class="w-full md:w-1/2 px-4">
+              <img src="https://icons8.com/wp-content/uploads/2020/02/tips-on-mobile-UI-design.png" alt="component-friendly">
+            </div>
+            <div class="w-full md:w-1/2 px-4">
+              <h4 class="lg:text-3xl text-xl text-gray-800 font-bold mb-3">
+                Add tasks, team members and personal notes
+              </h4>
+              <p class="text-gray-600 mb-8">
+                You can add/edit/delete tasks in each project you own. You can also add team members to make your workflow faster.In addition to that, you can organize your thoughts in your personal notes area.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center flex-wrap mb-20">
+            <div class="w-full md:w-1/2 px-4">
+              <h4 class="lg:text-3xl text-xl text-gray-800 font-bold mb-3">
+                Chat and coordinate tasks with your team members
+              </h4>
+              <p class="text-gray-600 mb-8">
+                For each project you have a group chat💬 to easily communicate with your team members.
+              </p>
+            </div>
+            <div class="w-full md:w-1/2 px-4">
+              <img src="https://statuscast.com/wp-content/uploads/2018/12/untitled-1@3x.png" alt="customizable">
+            </div>
+          </div>
+        </section>
+       
+        <section class="bg-gray-100 ">
+          <div class="container mx-auto px-6 text-center py-10 flex  justify-center flex-col items-center">
+            <h2 class="lg:text-4xl text-xl  font-bold mb-2 ">
+                What will change when you work with this project management app...
+            </h2>
+            <h3 class=" lg:text-2xl text-lg text-gray-500 w-2/3">
+                More motivation: No more over-complicated all-in-one tools, no more dozens of tools to learn. No more struggling team members.
+            </h3>
+            <a th:href="@{/register}" class="transform hover:scale-110 transition duration-300 ease-in-out bg-white font-bold rounded-full mt-6 lg:py-6 lg:px-8 py-4 px-6 shadow-lg uppercase tracking-wider focus:outline-none cursor-pointer">
+              Get Started
+            </a>
+          </div>  
+        </section>
+        <footer class="text-gray-600 body-font">
+            <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+              <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <span class="ml-3 text-xl  cursor-pointer">📓Project Management App</span>
+              </a>
+              <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4  cursor-pointer">© 2021 PMA —
+                <span  class="text-gray-600 ml-1">Seif Barouni</span>
+              </p>
+              <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start items-center">
+                <a class="text-black">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                  </svg>
+                </a>
+                <a th:href="@{https://github.com/Seifbarouni}" class="ml-3" target="_blank">
+                  <svg width="28px" height="28px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M 16 4 C 9.371094 4 4 9.371094 4 16 C 4 21.300781 7.4375 25.800781 12.207031 27.386719 C 12.808594 27.496094 13.027344 27.128906 13.027344 26.808594 C 13.027344 26.523438 13.015625 25.769531 13.011719 24.769531 C 9.671875 25.492188 8.96875 23.160156 8.96875 23.160156 C 8.421875 21.773438 7.636719 21.402344 7.636719 21.402344 C 6.546875 20.660156 7.71875 20.675781 7.71875 20.675781 C 8.921875 20.761719 9.554688 21.910156 9.554688 21.910156 C 10.625 23.746094 12.363281 23.214844 13.046875 22.910156 C 13.15625 22.132813 13.46875 21.605469 13.808594 21.304688 C 11.144531 21.003906 8.34375 19.972656 8.34375 15.375 C 8.34375 14.0625 8.8125 12.992188 9.578125 12.152344 C 9.457031 11.851563 9.042969 10.628906 9.695313 8.976563 C 9.695313 8.976563 10.703125 8.65625 12.996094 10.207031 C 13.953125 9.941406 14.980469 9.808594 16 9.804688 C 17.019531 9.808594 18.046875 9.941406 19.003906 10.207031 C 21.296875 8.65625 22.300781 8.976563 22.300781 8.976563 C 22.957031 10.628906 22.546875 11.851563 22.421875 12.152344 C 23.191406 12.992188 23.652344 14.0625 23.652344 15.375 C 23.652344 19.984375 20.847656 20.996094 18.175781 21.296875 C 18.605469 21.664063 18.988281 22.398438 18.988281 23.515625 C 18.988281 25.121094 18.976563 26.414063 18.976563 26.808594 C 18.976563 27.128906 19.191406 27.503906 19.800781 27.386719 C 24.566406 25.796875 28 21.300781 28 16 C 28 9.371094 22.628906 4 16 4 Z"/></svg>
+                </a>
+                <a class="ml-3 text-black" th:href="@{https://www.linkedin.com/in/seif-barouni-5811191b8}" target="_blank">
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                    <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </footer>
+      </div>
+</body>
+</html>

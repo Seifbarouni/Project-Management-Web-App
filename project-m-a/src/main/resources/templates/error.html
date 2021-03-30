@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" /> 
+    <title th:text="'❌ Status-'+${title}">error</title>
+
+    <link rel="stylesheet" th:href="@{/css/tailwind.css}">  
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+  
+        .font-family-karla{font-family: karla;}
+      </style>
+    
+</head>
+<body class=" min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0 font-family-karla">
+    <div class="text-center text-4xl font-bold ">Oops.</div>
+    <div th:switch="${title}">
+        <img th:case="404"  class="mx-auto"  height="400px" width="400px"  th:src="@{/images/404.png}" alt="404">
+
+        <img th:case="*" class="mx-auto"  height="400px" width="400px"  th:src="@{/images/500.png}" alt="500">
+
+    </div>
+  
+   <div class="text-center text-2xl font-bold">Something went wrong</div>
+   <div class="text-center text-xl font-bold" th:if="${message}" th:text="${message}"></div>
+    <div class=" text-center mt-10">
+         <a th:href="@{/myprojects}" class="font-bold hover:underline">Go Home</a>
+         <form th:action="@{/logout}" method="post">
+            <input  class="font-bold hover:underline bg-white" type="submit" value="Log out👋"/>
+        </form>
+    </div>
+</body>
+</html>
