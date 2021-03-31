@@ -1,10 +1,16 @@
-# Project Management App
+# 📓 Project Management App
 
 PMA is an app that helps teams and individuals organize their projects.
 
-## Installation
+## 👨‍💻 Technologies used :
 
-You should have java version 15 install. For each folder (except the service discovery one) open it and change these fields in application.properties :
+- Back-end : Spring boot (java)
+- Front-end : Vanilla js + Tailwind css
+- Database : Postgresql
+
+## ⚙️ Installation and configuration
+
+You should have java version 15 installed. For each folder (except the service discovery one) open it and change these fields in application.properties :
 
 ```bash
 spring.datasource.url= "your db's url"
@@ -12,19 +18,17 @@ spring.datasource.username= "your username"
 spring.datasource.password= "your db's password"
 ```
 
-## Usage
+## ▶️ Usage
 
-```bash
-Just run each microservice.
-```
+This app contains microservices that communicate with each other, so run each microservice after changing the application.properties files.
 
-## Screenshots
+## 📷 Screenshots
 
 images
 images
 images
 images
 
-## License
+## ⚖️ License
 
 [MIT](https://choosealicense.com/licenses/mit/)
