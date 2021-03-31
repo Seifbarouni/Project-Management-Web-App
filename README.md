@@ -23,6 +23,9 @@ spring.datasource.password= "your db's password"
 This app contains microservices that communicate with each other, so run each microservice after changing the application.properties files.
 
 ## 📷 Screenshots
+*Landing page
+![landing page](#)
+
 * Main page
 ![main page](https://github.com/Seifbarouni/Project-Management-Web-App/blob/main/main%20page.png)
 
@@ -37,9 +40,8 @@ This app contains microservices that communicate with each other, so run each mi
 ![personal notes 1](https://github.com/Seifbarouni/Project-Management-Web-App/blob/main/personal%20notes%201.png)
 ![personal notes 2](https://github.com/Seifbarouni/Project-Management-Web-App/blob/main/personal%20notes%202.png)
 
-
-images
-images
+* User profile
+![user profile](https://github.com/Seifbarouni/Project-Management-Web-App/blob/main/user%20profile.png)
 
 ## ⚖️ License
 
