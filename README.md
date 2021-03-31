@@ -4,8 +4,8 @@ PMA is an app that helps teams and individuals organize their projects.
 
 ## 👨‍💻 Technologies used :
 
-- Back-end : Spring boot (java)
-- Front-end : Vanilla js + Tailwind css
+- Back-end : [Spring boot](https://spring.io/projects/spring-boot) (java)
+- Front-end : Vanilla js + [Tailwind css](https://tailwindcss.com/) + [Thymeleaf (template engine)](https://www.thymeleaf.org/)
 - Database : Postgresql
 
 ## ⚙️ Installation and configuration
@@ -23,8 +23,11 @@ spring.datasource.password= "your db's password"
 This app contains microservices that communicate with each other, so run each microservice after changing the application.properties files.
 
 ## 📷 Screenshots
-*Landing page
-![landing page](#)
+* Landing page
+
+![landing page 1](https://github.com/Seifbarouni/Project-Management-Web-App/blob/main/landing%20page%201.png)
+![landing page 2](https://github.com/Seifbarouni/Project-Management-Web-App/blob/main/landing%20page%202.png)
+![landing page 3](https://github.com/Seifbarouni/Project-Management-Web-App/blob/main/landing%20page%203.png)
 
 * Main page
 
