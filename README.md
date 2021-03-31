@@ -10,7 +10,7 @@ PMA is an app that helps teams and individuals organize their projects.
 
 ## ⚙️ Installation and configuration
 
-You should have java version 15 installed. For each folder (except the service discovery one) open it and change these fields in application.properties :
+For each folder (except the service discovery one) open it and change these fields in application.properties :
 
 ```bash
 spring.datasource.url= "your db's url"
