@@ -1,4 +1,4 @@
-# 📓 Project Management App
+# 📓 Project Management App (still in development)
 
 PMA is an app that helps teams and individuals organize their projects.
 
